@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Suspicious Activity Detection using Lightweight Deep Learning</title>
+  <style>
+    /* Modern CSS Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #2d1b69, #4a2b8c, #6d4cc0);
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 50px;
+    }
+
+    /* Navigation */
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+      padding: 25px;
+      gap: 15px;
+    }
+
+    .button-container a {
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #8a2be2, #6a0dad);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 1.1em;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(138, 43, 226, 0.3);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .button-container a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(138, 43, 226, 0.5);
+      background: linear-gradient(135deg, #9b42f5, #7a1fd8);
+    }
+
+    /* Header */
+    h1 {
+      text-align: center;
+      font-size: 2.8em;
+      margin: 20px 0 40px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      position: relative;
+      padding-bottom: 20px;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 4px;
+      background: linear-gradient(to right, #8a2be2, #da70d6);
+      border-radius: 2px;
+    }
+
+    /* Content Section */
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Feature Cards */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 35px 30px;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, #8a2be2, #da70d6);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 15px 35px rgba(138, 43, 226, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #da70d6;
+      text-align: center;
+    }
+
+    .feature-card h2 {
+      font-size: 1.6em;
+      color: #fff;
+      margin-bottom: 15px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .feature-card p {
+      font-size: 1.05em;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+    }
+
+    /* System Overview Section */
+    .overview {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px auto;
+      max-width: 900px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .overview h2 {
+      font-size: 2em;
+      color: #fff;
+      margin-bottom: 25px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .overview h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(to right, #8a2be2, #da70d6);
+    }
+
+    .overview p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Tech Stack Section */
+    .tech-stack {
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .tech-stack h2 {
+      font-size: 2em;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .tech-tag {
+      padding: 12px 25px;
+      background: rgba(138, 43, 226, 0.2);
+      border: 1px solid rgba(138, 43, 226, 0.4);
+      border-radius: 30px;
+      font-size: 1.1em;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .tech-tag:hover {
+      background: rgba(138, 43, 226, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        padding: 25px 20px;
+      }
+
+      h1 {
+        font-size: 2.2em;
+        margin: 20px 0 30px;
+      }
+
+      .overview {
+        padding: 25px 20px;
+        margin: 30px 20px;
+      }
+
+      .overview h2 {
+        font-size: 1.7em;
+      }
+
+      .button-container {
+        justify-content: center;
+        padding: 15px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .overview h2 {
+        font-size: 1.5em;
+      }
+
+      .tech-tag {
+        padding: 10px 20px;
+        font-size: 1em;
+      }
+
+      .feature-icon {
+        font-size: 2em;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .feature-card, .overview, .tech-stack {
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .feature-card:nth-child(2) { animation-delay: 0.1s; }
+    .feature-card:nth-child(3) { animation-delay: 0.2s; }
+    .feature-card:nth-child(4) { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="button-container">
+    <a href="{{ url_for('index') }}">Back to Home</a>
+  </div>
+
+  <!-- Title -->
+  <h1>About the AI-Based Suspicious Activity Detection System</h1>
+
+  <!-- Main Content -->
+  <div class="content">
+    
+    <!-- System Overview -->
+    <div class="overview">
+      <h2>System Overview</h2>
+      <p>
+        Our advanced AI-powered surveillance system leverages lightweight deep learning models to detect 
+        suspicious activities in real-time. Combining computer vision with intelligent alert systems, 
+        it provides comprehensive security monitoring while maintaining optimal performance on standard hardware.
+      </p>
+      <p>
+        The system intelligently distinguishes between normal and suspicious behaviors, ensuring accurate 
+        detection with minimal false positives through sophisticated pattern recognition algorithms.
+      </p>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="feature-grid">
+      
+      <!-- Feature 1 -->
+      <div class="feature-card">
+        <div class="feature-icon">📷</div>
+        <h2>Live Camera & Data Capture</h2>
+        <p>
+          Real-time video processing from connected cameras with advanced preprocessing techniques 
+          including resizing, normalization, and frame sequencing. Secure frame processing without 
+          storing raw footage ensures privacy while maintaining analysis integrity.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h2>Activity Recognition Model</h2>
+        <p>
+          Lightweight MobileNet architecture combined with LSTM networks for analyzing human motion 
+          patterns across sequential frames. Achieves high accuracy in suspicious activity detection 
+          while maintaining real-time performance on standard computing hardware.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-card">
+        <div class="feature-icon">⚠️</div>
+        <h2>Suspicious Activity Detection</h2>
+        <p>
+          Advanced confidence scoring system that evaluates activities over time to distinguish 
+          between normal and suspicious behavior. When thresholds are crossed, activities are 
+          immediately flagged and logged with detailed timestamps and confidence levels.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-card">
+        <div class="feature-icon">🆔</div>
+        <h2>ID Card Detection & Alerts</h2>
+        <p>
+          YOLOv5-based object detection for ID card recognition with anti-spoofing measures that 
+          ignore screen replays. Automated email alerts to authorized personnel upon detecting 
+          suspicious activities, ensuring rapid response and security awareness.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="tech-stack">
+      <h2>Technology Stack</h2>
+      <div class="tech-tags">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">TensorFlow</span>
+        <span class="tech-tag">OpenCV</span>
+        <span class="tech-tag">MobileNet</span>
+        <span class="tech-tag">LSTM</span>
+        <span class="tech-tag">YOLOv5</span>
+        <span class="tech-tag">Flask</span>
+        <span class="tech-tag">Computer Vision</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

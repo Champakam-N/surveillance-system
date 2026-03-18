@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Suspicious Activity Detection using Lightweight Deep Learning | Login</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --primary-color: #6a11cb;
+      --secondary-color: #8a2be2;
+      --accent-color: #9d4edd;
+      --light-color: #f8f9fa;
+      --dark-color: #2d1b69;
+      --success-color: #b19cd9;
+      --border-radius: 12px;
+      --box-shadow: 0 10px 30px rgba(106, 17, 203, 0.2);
+      --transition: all 0.3s ease;
+      --gradient: linear-gradient(135deg, #6a11cb 0%, #8a2be2 50%, #9d4edd 100%);
+      --gradient-light: linear-gradient(135deg, rgba(106, 17, 203, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--gradient);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--dark-color);
+      padding: 20px;
+    }
+
+    /* Navigation */
+    nav {
+      width: 90%;
+      max-width: 1200px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--border-radius);
+      padding: 15px 30px;
+      margin: 20px auto;
+      box-shadow: var(--box-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 10px;
+      font-size: 1.6rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--dark-color);
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav ul li a:hover {
+      background: var(--gradient-light);
+      color: var(--primary-color);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    nav ul li a:hover::after {
+      width: 80%;
+    }
+
+    /* Login Container */
+    .login-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      width: 90%;
+      max-width: 450px;
+      margin: 40px auto;
+      color: var(--dark-color);
+      animation: fadeIn 0.8s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-container h2 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+      font-weight: 600;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .login-container h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--gradient);
+      border-radius: 3px;
+    }
+
+    .input-group {
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--dark-color);
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 20px;
+      border: 1px solid #e1d6f9;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: var(--transition);
+      background: #fff;
+      color: var(--dark-color);
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(157, 78, 221, 0.2);
+      background: #fefcff;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--gradient);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.7s ease;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(106, 17, 203, 0.3);
+    }
+
+    .login-btn:hover::before {
+      left: 100%;
+    }
+
+    .login-btn:active {
+      transform: translateY(0);
+    }
+
+    .bottom-links {
+      margin-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    .bottom-links a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: var(--transition);
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+
+    .bottom-links a:hover {
+      background: var(--gradient-light);
+      text-decoration: none;
+    }
+
+    /* Additional Info */
+    .login-info {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    /* Add decorative elements */
+    .violet-orb {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(157, 78, 221, 0.2) 0%, rgba(157, 78, 221, 0) 70%);
+      border-radius: 50%;
+      z-index: -1;
+      top: 10%;
+      right: 10%;
+    }
+
+    .violet-orb:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      top: 60%;
+      left: 5%;
+      background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, rgba(138, 43, 226, 0) 70%);
+    }
+
+    /* Form animation */
+    form {
+      animation: slideUp 0.5s ease 0.3s both;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 15px;
+      }
+      
+      nav ul {
+        margin-top: 15px;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .login-container {
+        padding: 30px;
+      }
+      
+      .violet-orb {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 25px 20px;
+        width: 95%;
+      }
+      
+      nav ul {
+        gap: 10px;
+      }
+      
+      nav ul li a {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+      }
+      
+      .logo span {
+        font-size: 1.1rem;
+      }
+      
+      .bottom-links {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+      
+      .login-container h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Decorative elements -->
+  <div class="violet-orb"></div>
+  <div class="violet-orb"></div>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="/" class="logo">
+      <i class="fas fa-shield-alt"></i>
+      <span>Suspicious Detection</span>
+    </a>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/register">Register</a></li>
+      <li><a href="/analysis">Analysis</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Login Form -->
+  <div class="login-container">
+    <h2>Welcome Back</h2>
+    <form method="POST" action="{{ url_for('login') }}">
+      <div class="input-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+
+      <button type="submit" class="login-btn">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+    </form>
+
+    <div class="bottom-links">
+      <a href="/register">Create an account</a>
+      <a href="/forgot-password">Forgot password?</a>
+    </div>
+    
+    <div class="login-info">
+      <p>Secure login for healthcare professionals and patients</p>
+    </div>
+  </div>
+
+
+</body>
+</html>

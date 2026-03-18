@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Analysis</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a0933;
+            color: white;
+            padding: 20px;
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #b39ddb;
+            text-shadow: 0 0 10px rgba(179, 157, 219, 0.3);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #2d1b69, #1f1047);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(109, 76, 255, 0.1);
+            border: 1px solid rgba(179, 157, 219, 0.1);
+        }
+
+        .image-row {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .image-row img {
+            width: 450px;
+            max-width: 100%;
+            border-radius: 10px;
+            border: 2px solid #5e35b1;
+            background: white;
+            padding: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-row img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(109, 76, 255, 0.3);
+        }
+
+        .caption {
+            text-align: center;
+            margin-top: 10px;
+            color: #d1c4e9;
+            font-size: 14px;
+        }
+
+        .back-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 28px;
+            background: linear-gradient(145deg, #7e57c2, #5e35b1);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(109, 76, 255, 0.2);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(145deg, #9575cd, #7e57c2);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(109, 76, 255, 0.3);
+        }
+
+        .back-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <h2>Suspicious Activity – Model Analysis</h2>
+
+    <!-- ================= IMAGE ANALYSIS ================= -->
+    <div class="card">
+        <h3>Model Performance Graphs</h3>
+
+        <div class="image-row">
+
+            <!-- Accuracy / Precision / Recall / F1 -->
+            <div>
+                <img src="static\images\final_performance_metrics.png"
+                     alt="Accuracy Precision Recall F1">
+                <div class="caption">
+                    Final Performance Metrics
+                </div>
+            </div>
+
+            <!-- Training Loss -->
+            <div>
+                <img src="static\images\learning_curve.png"
+                     alt="Training Loss">
+                <div class="caption">
+                    Learning Curve
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <button class="back-btn" onclick="window.location.href='/'">
+        ⬅ Back to Home
+    </button>
+
+</div>
+</body>
+</html>
