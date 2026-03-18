@@ -30,8 +30,8 @@ app.secret_key = "surveillance_secret_key"
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 SENDER_EMAIL = "shreelakshmi112.k@gmail.com"
-SENDER_PASSWORD = "bivh dztf umfp bzuu"
-RECEIVER_EMAIL = "champareddy19@gmail.com"
+SENDER_PASSWORD = "passowrd"
+RECEIVER_EMAIL = "reddy@gmail.com"
 
 def send_alert_email(conf):
     try:
