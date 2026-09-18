@@ -74,7 +74,7 @@ If detected:
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 ```
 project/
 
